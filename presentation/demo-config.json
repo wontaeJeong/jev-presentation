@@ -1,0 +1,4 @@
+{
+  "cliCommand": "",
+  "note": "실제 Agent Router repo의 --help와 README에서 확인한 명령을 넣으세요. CLI 코드를 이 패키지에서 새로 구현하지 않습니다."
+}

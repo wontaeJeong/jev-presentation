@@ -1,0 +1,57 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Jev · Print</title><link rel="stylesheet" href="../assets/fonts.css"><link rel="stylesheet" href="../assets/deck.css"><style>@page{size:1280px 720px;margin:0}html,body{padding:0;margin:0;background:#111311}.deck-canvas{break-after:page;page-break-after:always}.deck-canvas:last-child{break-after:auto}[data-step]{opacity:1!important}</style></head><body><div class="deck-canvas cover"><div class="cover-name">Jev<span class="period">.</span></div>
+      <h1 class="cover-title">소프트웨어의<br>작은 판단들</h1>
+      <p class="cover-sub">의사결정 모델과 Agent Router 비교 데모</p>
+      <div class="cover-meta"><span>Jev · Agent Router</span><span>2026.09.30</span></div><div class="page-number">01 / 10</div></div>
+<div class="deck-canvas "><h2>Jev 한눈에 이해하기</h2>
+      <p class="statement">상황을 읽고,<br><em>보기 중에서 고르는 AI</em></p>
+      <div class="comparison-sentence"><div><span class="mono-label">GENERATIVE LLM</span><p>문장·코드·설명 생성</p></div><div data-step="1"><span class="mono-label accent">JEV / SYSTEM ONE</span><p>정해진 답과 판단의 확률</p></div></div>
+      <p class="bottom-line">TypeSafe의 의사결정 모델. 코드가 사용할 답의 공간을 개발자가 먼저 정의합니다.</p><div class="page-number">02 / 10</div></div>
+<div class="deck-canvas "><h2>에이전트에서 반복되는 판단</h2>
+      <div class="request-strip"><span class="mono-label">USER REQUEST</span><p>“장애 원인을 분석하고, 최신 정보를 확인한 뒤,<br>필요하면 운영 설정을 변경해줘.”</p></div>
+      <div class="decision-rows"><div><span class="number">01</span><strong>어느 모델로 보낼까?</strong><code>FAST / STANDARD / REASONING</code></div><div data-step="1"><span class="number">02</span><strong>검색이 필요한가?</strong><code>needs_web</code></div><div data-step="2"><span class="number">03</span><strong>승인이 필요한가?</strong><code>needs_approval</code></div></div>
+      <p class="bottom-line">Agent Router는 답변 생성에 앞서 요청의 처리 경로를 결정합니다.</p><div class="page-number">03 / 10</div></div>
+<div class="deck-canvas "><h2>Jev의 입출력과 동작 방식</h2>
+      <div class="io-layout"><div class="io-input"><span class="mono-label">INPUT</span><h3>상황 + 타입이 있는 질문</h3><pre><code>state: 긴 업무 요청
+
+questions:
+  route          Choice
+  needs_web      Noul
+  needs_approval Noul</code></pre></div><div class="io-output" data-step="1"><span class="mono-label accent">OUTPUT</span><h3>코드가 읽을 판단 결과</h3><div class="primitive"><strong>Choice</strong><span>선택값 + 옵션별 확률 + confidence</span></div><div class="primitive"><strong>Noul</strong><span>“예”일 확률, 0~1</span></div><div class="primitive"><strong>Score</strong><span>순서가 있는 등급의 확률 가중 점수</span></div></div></div>
+      <p class="bottom-line">Choice·Score의 confidence는 확률 분포에서 계산합니다. 개별 답의 정답 보장은 아닙니다.</p><div class="page-number">04 / 10</div></div>
+<div class="deck-canvas "><h2>기존 기술과의 차이</h2>
+      <p class="lead">기능은 겹칩니다. <em>무엇을 학습하고 어떤 값으로 반환하는지</em>를 비교합니다.</p>
+      <table class="editorial-table"><thead><tr><th>기술</th><th>주로 다루는 문제</th><th>Jev와 비교할 지점</th></tr></thead><tbody>
+      <tr><td>Classifier</td><td>분류·라벨 선택</td><td>질문 정의 방식과 확률 보정</td></tr>
+      <tr><td>Guardrail</td><td>정책·위험 검사</td><td>Jev가 수행할 수 있는 판단의 활용 목적</td></tr>
+      <tr><td>LLM-as-a-Judge</td><td>응답 평가·복합 기준 판단</td><td>설명·추론 필요 여부와 좁은 질문의 적합성</td></tr>
+      <tr><td>Structured Output</td><td>출력의 스키마 준수</td><td>형식 준수와 판단 정확도·불확실성은 별개</td></tr>
+      </tbody></table><p class="bottom-line" data-step="1">일반 LLM도 같은 답을 낼 수 있습니다. 속도·품질·출력 처리 비용은 실제로 비교합니다.</p><div class="page-number">05 / 10</div></div>
+<div class="deck-canvas "><h2>OpenAI Decisions API와 관련 모델</h2>
+      <div class="two-products"><div><span class="mono-label">TYPESAFE</span><h3>Jev / System One</h3><p>텍스트 상태와 타입이 있는 질문</p><p>Choice·Noul·Score</p><p>확률 보정에 초점을 둔 의사결정 모델</p></div><div><span class="mono-label accent">OPENAI · 2026.09.29 발표</span><h3>Decisions API</h3><p>텍스트·이미지 맥락과 질문 집합</p><p>미리 정한 유한한 선택지</p><p>Luna 기반의 실시간 의사결정 API</p></div></div>
+      <div class="open-model-line" data-step="1"><strong>로컬 대안</strong><span>Laya 등 공개 모델도 탐색 가능. Ollama 데모의 API·확률·성능은 각각 확인해야 합니다.</span></div>
+      <p class="bottom-line">Decisions API는 발표 당시 제한된 프리뷰. 이 발표의 실험 대상은 로컬 Jev-like 라우터입니다.</p><div class="page-number">06 / 10</div></div>
+<div class="deck-canvas "><h2>적용 사례와 활용 지점</h2>
+      <div class="case-list"><div><span class="case-label">실제 유사 사례</span><h3>Claude Code auto mode</h3><p>도구 실행 전 classifier가 행동을 평가.<br>빠른 필터 뒤에 필요한 경우 추가 추론.</p><span class="caption">Anthropic의 구현이며 Jev 사용 사례는 아닙니다.</span></div><div data-step="1"><span class="case-label">공식 활용 패턴</span><h3>Intent routing</h3><p>요청을 분류해 일반 코드·전문 LLM·<br>사람에게 처리 경로를 배정.</p></div><div data-step="2"><span class="case-label">우리의 적용 후보</span><h3>Agent Router / ACE-RTL</h3><p>라우팅 또는 재시도·검증·종료 판단.<br>RTL 생성은 기존 생성형 LLM에 유지.</p></div></div>
+      <p class="bottom-line">오늘 시연은 Agent Router. ACE-RTL 통합은 적용 아이디어로 구분합니다.</p><div class="page-number">07 / 10</div></div>
+<div class="deck-canvas "><h2>Agent Router 데모 구성</h2>
+      <p class="lead">같은 긴 요청, 같은 판단 항목. <em>라우터 구현을 비교합니다.</em></p>
+      <div class="router-input"><span class="mono-label">SAME REQUEST + SAME DECISION CONTRACT</span><p>route · needs_web · needs_approval</p></div>
+      <div class="router-lanes"><div><span class="mono-label">BASELINE</span><h3>일반 LLM</h3><p>로컬 LiteLLM</p><p class="lane-detail">JSON 생성과 결과 검증·정규화</p></div><div><span class="mono-label accent">JEV-LIKE</span><h3>의사결정 라우터</h3><p>로컬 Ollama</p><p class="lane-detail">실제 엔드포인트의 반환 방식에 맞춘 어댑터</p></div></div>
+      <div class="router-output"><strong>CLI에서 나란히 비교</strong><span>판단 결과 · 시간 · 토큰 · 원본 출력 · 파싱/오류</span></div>
+      <p class="bottom-line">라우팅 판단까지 비교합니다. 선택된 모델·검색·승인 절차는 실제 실행하지 않습니다.</p><div class="page-number">08 / 10</div></div>
+<div class="deck-canvas demo"><h2>Agent Router 라이브 데모</h2>
+      <span class="mono-label accent">SCENARIO · OPERATIONS</span>
+      <blockquote class="long-request">“운영 중인 PostgreSQL에서 오늘 오전부터 응답 지연이 늘었습니다. 첨부한 로그와 설정을 함께 검토해 원인 후보와 확인 순서를 정리해주세요. 사용 중인 버전의 최신 알려진 문제도 찾아보고, 설정 변경이 필요하다면 서비스 영향과 되돌리는 방법을 설명한 뒤 제 승인을 받고 진행해주세요.”</blockquote>
+      <div class="demo-bottom"><div><span class="mono-label">판단할 항목</span><p>모델 경로 / 검색 필요 / 승인 필요</p></div><div><span class="mono-label">시연 순서</span><p>대표 요청 → 쉬운 요청 → 직접 입력</p></div></div>
+      <p class="bottom-line">여기서 터미널로 전환합니다. 위 문장은 발표용 입력 예시이며 실행 결과를 미리 정하지 않습니다.</p><div class="page-number">09 / 10</div></div>
+<div class="deck-canvas results"><h2>측정 결과와 해석</h2>
+      <p class="lead">판단의 품질과 처리 비용을 <em>함께 확인합니다.</em></p>
+      <table class="editorial-table results-table"><thead><tr><th>관찰 항목</th><th>일반 LLM</th><th>로컬 Jev-like</th></tr></thead><tbody>
+      <tr><td>판단 결과 / 기대값 일치</td><td data-metric="llm.decision">실행 후 확인</td><td data-metric="jev.decision">실행 후 확인</td></tr>
+      <tr><td>요청 시간 · 중앙값</td><td data-metric="llm.latency">측정 전</td><td data-metric="jev.latency">측정 전</td></tr>
+      <tr><td>입력 / 출력 토큰 · 평균</td><td data-metric="llm.tokens">측정 전</td><td data-metric="jev.tokens">측정 전</td></tr>
+      <tr><td>오류 / 파싱 실패</td><td data-metric="llm.errors">측정 전</td><td data-metric="jev.errors">측정 전</td></tr>
+      </tbody></table>
+      <p class="result-status" data-results-status>현재 실측 데이터 없음. 숫자는 CLI 실행 결과를 받은 뒤 반영합니다.</p>
+      <div class="closing-thought"><span class="mono-label">핵심 질문</span><p>이 판단에 어떤 모델이 적합한가?</p></div>
+      <p class="bottom-line">로컬 모델·양자화·서빙 설정을 포함한 실험입니다. Jev 공식 서비스의 성능 비교가 아닙니다.</p><div class="page-number">10 / 10</div></div></body></html>

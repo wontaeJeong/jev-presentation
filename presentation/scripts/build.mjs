@@ -1,0 +1,25 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+const require=createRequire(import.meta.url);
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const mode=process.argv[2]||'local';
+if(!['local','pages'].includes(mode))throw new Error('Use local or pages');
+const repo=process.env.GITHUB_REPOSITORY?.split('/').at(-1)||process.env.PAGES_REPO||'jev-demo';
+if(!/^[A-Za-z0-9._-]+$/.test(repo))throw new Error('Invalid Pages repository name');
+const out=path.join(root,'presentation/dist',mode);
+await fs.mkdir(out,{recursive:true});
+await fs.cp(path.join(root,'presentation/reveal'),path.join(out,'reveal'),{recursive:true});
+const cli=path.join(path.dirname(require.resolve('@slidev/cli/package.json')),'bin/slidev.mjs');
+const base=mode==='local'?'/slidev/':`/${repo}/slidev/`;
+const built=spawnSync(process.execPath,[cli,'build','slides.md','--base',base,'--out',path.join(out,'slidev'),...(mode==='pages'?['--without-notes']:[])],{cwd:path.join(root,'presentation/slidev'),stdio:'inherit'});
+if(built.status!==0)process.exit(built.status||1);
+await fs.cp(path.join(root,'presentation/assets'),path.join(out,'assets'),{recursive:true});
+await fs.copyFile(path.join(root,'presentation/content.md'),path.join(out,'content.md'));
+await fs.copyFile(path.join(root,'presentation/reveal-standalone.html'),path.join(out,'reveal-standalone.html'));
+for(const f of ['jev-reveal.pdf','jev-slidev.pdf']){try{await fs.copyFile(path.join(root,'presentation',f),path.join(out,f));}catch{}}
+await fs.writeFile(path.join(out,'.nojekyll'),'');
+await fs.copyFile(path.join(root,'presentation/index.html'),path.join(out,'index.html'));
+console.log(`Built ${mode}: ${out}; Slidev base=${base}`);

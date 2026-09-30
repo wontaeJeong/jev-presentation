@@ -1,0 +1,20 @@
+{
+  "name": "jev-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Offline Korean Jev talk in reveal.js and Slidev",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "build:local": "node scripts/build.mjs local",
+    "build:pages": "node scripts/build.mjs pages",
+    "serve": "python3 -m http.server 8000 --bind 127.0.0.1 --directory dist/local"
+  },
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/noto-sans-kr": "5.3.0",
+    "@slidev/cli": "53.0.0",
+    "@slidev/theme-default": "0.25.0",
+    "reveal.js": "6.0.2"
+  }
+}

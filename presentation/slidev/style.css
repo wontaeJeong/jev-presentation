@@ -1,0 +1,4 @@
+@import './public/assets/fonts.css';
+@import './public/assets/deck.css';
+html,body,#app{background:#111311;color:#f2f0e8}
+.slidev-layout{padding:0!important}.slidev-page .deck-canvas{position:absolute;inset:0}.slidev-vclick-hidden{opacity:0!important}.slidev-vclick-target{transition:opacity .35s ease}.slidev-code{background:none!important}

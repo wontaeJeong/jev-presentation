@@ -1,0 +1,6 @@
+{
+  "status": "unmeasured",
+  "conditions": "실측 데이터 없음",
+  "llm": {"decision": null, "median_latency_ms": null, "mean_input_tokens": null, "mean_output_tokens": null, "errors": null, "parsing_failures": null, "requests": null},
+  "jev": {"decision": null, "median_latency_ms": null, "mean_input_tokens": null, "mean_output_tokens": null, "errors": null, "parsing_failures": null, "requests": null}
+}

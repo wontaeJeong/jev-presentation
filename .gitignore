@@ -1,0 +1,4 @@
+node_modules/
+presentation/slidev/.slidev/
+presentation/slidev/.vite/
+*.log

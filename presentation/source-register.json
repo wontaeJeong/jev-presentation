@@ -1,0 +1,131 @@
+{
+  "checkedAt": "2026-09-30",
+  "sources": {
+    "intro": [
+      "TypeSafe · Introduction",
+      "https://docs.typesafe.ai/introduction"
+    ],
+    "system": [
+      "TypeSafe · System One",
+      "https://docs.typesafe.ai/concepts/system-one"
+    ],
+    "choice": [
+      "TypeSafe · Choice",
+      "https://docs.typesafe.ai/primitives/choice"
+    ],
+    "noul": [
+      "TypeSafe · Noul",
+      "https://docs.typesafe.ai/primitives/noul"
+    ],
+    "score": [
+      "TypeSafe · Score",
+      "https://docs.typesafe.ai/primitives/score"
+    ],
+    "confidence": [
+      "TypeSafe · Confidence",
+      "https://docs.typesafe.ai/confidence"
+    ],
+    "routing": [
+      "TypeSafe · Intent routing",
+      "https://docs.typesafe.ai/patterns/intent-routing"
+    ],
+    "structured": [
+      "OpenAI · Structured outputs",
+      "https://developers.openai.com/api/docs/guides/structured-outputs"
+    ],
+    "decisions": [
+      "OpenAI · DevDay 2026 recap (2026-09-29)",
+      "https://openai.com/ko-KR/index/devday-2026-recap/"
+    ],
+    "claude": [
+      "Anthropic · Claude Code auto mode",
+      "https://www.anthropic.com/engineering/claude-code-auto-mode"
+    ],
+    "laya": [
+      "Laya · Official model card",
+      "https://huggingface.co/convaiinnovations/laya"
+    ]
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Jev와 의사결정 모델",
+      "seconds": 30,
+      "refs": []
+    },
+    {
+      "number": 2,
+      "title": "Jev 한눈에 이해하기",
+      "seconds": 60,
+      "refs": [
+        "intro",
+        "system"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "에이전트에서 반복되는 판단",
+      "seconds": 60,
+      "refs": [
+        "routing"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Jev의 입출력과 동작 방식",
+      "seconds": 90,
+      "refs": [
+        "choice",
+        "noul",
+        "score",
+        "confidence"
+      ]
+    },
+    {
+      "number": 5,
+      "title": "기존 기술과의 차이",
+      "seconds": 120,
+      "refs": [
+        "system",
+        "structured"
+      ]
+    },
+    {
+      "number": 6,
+      "title": "OpenAI Decisions API와 관련 모델",
+      "seconds": 90,
+      "refs": [
+        "system",
+        "decisions",
+        "laya"
+      ]
+    },
+    {
+      "number": 7,
+      "title": "적용 사례와 활용 지점",
+      "seconds": 60,
+      "refs": [
+        "claude",
+        "routing"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Agent Router 데모 구성",
+      "seconds": 60,
+      "refs": []
+    },
+    {
+      "number": 9,
+      "title": "Agent Router 라이브 데모",
+      "seconds": 240,
+      "refs": []
+    },
+    {
+      "number": 10,
+      "title": "측정 결과와 해석",
+      "seconds": 90,
+      "refs": []
+    }
+  ]
+}
